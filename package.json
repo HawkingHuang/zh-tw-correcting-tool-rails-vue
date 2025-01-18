@@ -42,5 +42,9 @@
     "plugins": [
       "prettier-plugin-tailwindcss"
     ]
+  },
+  "scripts": {
+    "lint": "yarn run eslint --fix app/packs/src/ app/packs/entrypoints eslint.config.mjs --format codeframe",
+    "lint:check": "yarn run eslint app/packs/src/ app/packs/entrypoints eslint.config.mjs --format codeframe"
   }
 }

@@ -1,0 +1,12 @@
+{
+  "entrypoints/application.css": {
+    "file": "assets/application-cv2DS2T-.css",
+    "isEntry": true,
+    "src": "entrypoints/application.css"
+  },
+  "entrypoints/application.js": {
+    "file": "assets/application-DP2rzg_V.js",
+    "isEntry": true,
+    "src": "entrypoints/application.js"
+  }
+}
