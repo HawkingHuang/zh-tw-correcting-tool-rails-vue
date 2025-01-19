@@ -8,7 +8,7 @@ import BaseTextInput from '@/src/components/BaseTextInput.vue'
     <form action="/login" method="post">
       <div class="px-4">
         <div class="mb-4 w-full">
-          <BaseTextInput :label="'帳號'" :name="'account'" />
+          <BaseTextInput :label="'帳號'" :name="'username'" />
         </div>
         <div class="mb-8 w-full">
           <BaseTextInput
