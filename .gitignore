@@ -35,4 +35,5 @@
 /config/master.key
 
 # Vite Ruby
+/public/vite*
 node_modules
