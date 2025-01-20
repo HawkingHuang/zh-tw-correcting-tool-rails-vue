@@ -29,8 +29,8 @@ const mixinSwal = swal.mixin({
     container: customStyleClass
   },
   buttonsStyling: true,
-  confirmButtonText: '確認',
-  cancelButtonText: '取消'
+  confirmButtonText: 'Confirm',
+  cancelButtonText: 'Cancel'
 })
 mixinSwal.simpleLoading = function (title = undefined) {
   if (typeof title === 'boolean' && !title) {
