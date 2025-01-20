@@ -1,0 +1,38 @@
+<% modules = [
+  { name: "Check", path: login_path, controller_path: "sessions" },
+  { name: "Custom", path: login_path, controller_path: "sessions" },
+  { name: "Library", path: login_path, controller_path: "sessions" },
+  { name: "Feedback", path: login_path, controller_path: "sessions" },
+  { name: "About", path: about_index_path, controller_path: "about" }
+] %>
+
+<div class="navbar bg-base-100">
+  <div class="flex-none">
+    <button class="btn btn-square btn-ghost">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="inline-block h-5 w-5 stroke-current">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="flex-1">
+    <% modules.each do |tab| %>
+      <%= link_to(
+          tab[:name],
+          tab[:path],
+          class: (controller.controller_path == tab[:controller_path] ?
+            "btn text-xl" :
+            "btn btn-ghost text-xl")) %>
+    <% end %>
+    <%= button_to "Log Out", logout_path, method: "delete",
+      class: "btn btn-ghost text-xl"
+      %>
+  </div>
+</div>

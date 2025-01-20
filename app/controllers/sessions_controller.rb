@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to about_path, notice: '登入成功！'
+      redirect_to about_index_path, notice: '登入成功！'
     else
       flash[:alert] = '帳號或密碼不正確'
       render :login
