@@ -4,18 +4,18 @@ import BaseTextInput from '@/src/components/BaseTextInput.vue'
 
 <template>
   <div>
-    <h2 class="text-center text-3xl font-bold">歡迎使用</h2>
+    <h2 class="text-center text-3xl font-bold">Welcome</h2>
     <form action="/signup" method="post">
       <div class="px-4">
         <div class="mb-4 w-full">
-          <BaseTextInput :label="'電子郵件'" :name="'email'" />
+          <BaseTextInput :label="'Email'" :name="'email'" />
         </div>
         <div class="mb-4 w-full">
-          <BaseTextInput :label="'帳號'" :name="'username'" />
+          <BaseTextInput :label="'Username'" :name="'username'" />
         </div>
         <div class="mb-8 w-full">
           <BaseTextInput
-            :label="'密碼'"
+            :label="'Password'"
             :type="'password'"
             :name="'password'"
           />
@@ -23,9 +23,9 @@ import BaseTextInput from '@/src/components/BaseTextInput.vue'
         <div class="flex items-center justify-between gap-2">
           <button
             type="submit"
-            class="w-full rounded bg-yellow-400 p-3 text-lg font-bold text-white"
+            class="w-full rounded bg-yellow-400 p-3 text-xl font-bold text-white"
           >
-            註冊
+            Sign Up
           </button>
         </div>
       </div>
