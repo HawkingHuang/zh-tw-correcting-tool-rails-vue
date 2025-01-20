@@ -6,7 +6,7 @@ import BaseCard from '@/src/components/BaseCard.vue'
   <div>
     <base-card>
       <div class="p-2">
-        <h2 class="text-2xl font-bold">About This Tool</h2>
+        <h2 class="py-2 text-2xl font-bold">About This Tool</h2>
         <div class="flex flex-col gap-3 text-lg ">
           <p>
             The <strong>Traditional Chinese Checker</strong> is a tool built for
