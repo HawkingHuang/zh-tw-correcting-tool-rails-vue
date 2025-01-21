@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  correct_word: MyString
+  incorrect_word: MyString
+  bpmf_category: MyString
+
+two:
+  correct_word: MyString
+  incorrect_word: MyString
+  bpmf_category: MyString
