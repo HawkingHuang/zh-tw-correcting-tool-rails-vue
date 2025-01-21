@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to about_index_path, notice: '登入成功！'
+      redirect_to about_index_path, notice: "Log in successfully!"
     else
-      flash[:alert] = '帳號或密碼不正確'
+      flash[:alert] = "Invalid username or password"
       render :login
     end
   end
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: '您已成功登出'
+    redirect_to login_path, notice: "Log out successfully!"
   end
 end

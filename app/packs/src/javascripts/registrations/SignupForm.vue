@@ -1,5 +1,6 @@
 <script setup>
 import BaseTextInput from '@/src/components/BaseTextInput.vue'
+import { UserAddOutlined } from '@ant-design/icons-vue'
 </script>
 
 <template>
@@ -23,8 +24,9 @@ import BaseTextInput from '@/src/components/BaseTextInput.vue'
         <div class="flex items-center justify-between gap-2">
           <button
             type="submit"
-            class="w-full rounded bg-yellow-400 p-3 text-xl font-bold text-white"
+            class="flex w-full items-center justify-center gap-2 rounded bg-yellow-400 p-3 text-center text-xl font-bold text-white"
           >
+            <UserAddOutlined />
             Sign Up
           </button>
         </div>

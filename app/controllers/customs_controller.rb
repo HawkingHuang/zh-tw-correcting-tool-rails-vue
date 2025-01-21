@@ -4,6 +4,10 @@ class CustomsController < ApplicationController
 
   def index
     @customs = current_user.customs
+
+    if params[:keyword].present?
+      @customs = @customs.where("correct_word LIKE ? OR incorrect_word LIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    end    
   end
 
   def new

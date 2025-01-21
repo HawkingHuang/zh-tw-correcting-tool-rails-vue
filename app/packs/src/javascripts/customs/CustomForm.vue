@@ -58,7 +58,7 @@ const submitForm = () => {
 <template>
   <div>
     <base-card>
-      <form @submit.prevent="submitForm">
+      <form @submit.prevent="submitForm" class="leave-need-confirm">
         <div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-1">
           <BaseTextInput
             label="Correct Word"

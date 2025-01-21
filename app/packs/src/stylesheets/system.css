@@ -7,3 +7,8 @@
 h1 {
   @apply text-6xl font-bold;
 }
+
+.custom-scroll {
+  scrollbar-color: auto;
+  scrollbar-width: thin;
+}

@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to about_path, notice: '註冊成功！'
+      redirect_to about_index_path, notice: "Sign up successfully!"
     else
       render :signup
     end
