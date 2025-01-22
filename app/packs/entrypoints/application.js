@@ -4,6 +4,7 @@ window.jQuery = window.$ = $
 import mySwal from '@/src/javascripts/plugins/mySwal.js'
 import '@/src/javascripts/sessions/login.js'
 import '@/src/javascripts/registrations/signup.js'
+import '@/src/javascripts/libraries/index.js'
 import '@/src/javascripts/customs/index.js'
 import '@/src/javascripts/customs/form.js'
 import '@/src/javascripts/about/index.js'
