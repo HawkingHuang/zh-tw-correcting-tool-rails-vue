@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, toRefs, onMounted } from 'vue'
 import BaseCard from '@/src/components/BaseCard.vue'
 import BaseSelect from '@/src/components/BaseSelect.vue'
 import { SearchOutlined } from '@ant-design/icons-vue'
@@ -7,6 +7,15 @@ import { SearchOutlined } from '@ant-design/icons-vue'
 const searchInfo = ref({
   category: ''
 })
+
+const props = defineProps({
+  libraries: {
+    type: Array
+  }
+})
+
+const { libraries } = toRefs(props)
+console.log(libraries.value)
 
 const categoryList = [
   { value: 'bpmf1', label: 'ㄅ' },
@@ -47,31 +56,46 @@ const categoryList = [
   { value: 'bpmf36', label: 'ㄥ' },
   { value: 'bpmf37', label: 'ㄦ' }
 ]
+
+onMounted(() => {
+  const searchParams = new URLSearchParams(window.location.search)
+  searchInfo.value.category = searchParams.get('category')
+})
 </script>
 
 <template>
   <div class="">
     <base-card>
-      <div class="mb-4 flex justify-between">
-        <form
-          action="/libraries"
-          accept-charset="UTF-8"
-          method="get"
-          class="flex gap-2"
-        >
-          <BaseSelect
-            :name="'category'"
-            :optionList="categoryList"
-            :optionsSelected="searchInfo.category"
-            @select="searchInfo.category = $event"
-          />
-          <button
-            type="submit"
-            class="btn text-lg"
+      <div>
+        <div class="mb-4 flex justify-between">
+          <form
+            action="/libraries"
+            accept-charset="UTF-8"
+            method="get"
+            class="flex gap-2"
           >
-            <SearchOutlined />
-          </button>
-        </form>
+            <BaseSelect
+              :name="'category'"
+              :optionList="categoryList"
+              :optionsSelected="searchInfo.category"
+              @select="searchInfo.category = $event"
+            />
+            <button
+              type="submit"
+              class="btn text-lg"
+            >
+              <SearchOutlined />
+            </button>
+          </form>
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+          <div v-for="(word, index) in libraries" :key="index" class="rounded border border-gray-200 bg-gray-200">
+            <div class="flex justify-center gap-1">
+              <div class="py-2 text-lg text-green-500">{{ word.correct_word }}</div>
+              <div class="py-2 text-lg text-red-500">{{ word.incorrect_word }}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </base-card>
   </div>

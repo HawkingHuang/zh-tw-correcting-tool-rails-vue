@@ -84,7 +84,7 @@ const matchedOption = computed(() => {
 })
 </script>
 <template>
-  <div class="relative">
+  <div class="relative w-[225px]">
     <!-- 給原生 form 表單 formData 使用的 input 欄位 -->
     <input
       :name="name"
@@ -102,7 +102,6 @@ const matchedOption = computed(() => {
           <a-select
             :value="matchedOption"
             :options="optionList"
-            :show-search="optionList.length >= minimumResultsForSearch"
             :filter-option="filterOption"
             :mode="selectMode"
             :disabled="disabled"
@@ -120,6 +119,27 @@ const matchedOption = computed(() => {
     </label>
   </div>
 </template>
-<style lang="css" scoped>
+<style>
+.ant-select .ant-select-selector {
+  min-height: 3rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
 
+.ant-select .ant-select-selector .ant-select-selection-search-input {
+  height: 100%;
+}
+
+.ant-select .ant-select-selector .ant-select-selection-item,
+.ant-select .ant-select-selector .ant-select-selection-placeholder {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+}
+
+.ant-select .ant-select-selector .ant-select-selection-item-remove {
+  vertical-align: middle;
+}
 </style>
