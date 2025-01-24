@@ -60,6 +60,10 @@ const categoryList = [
 onMounted(() => {
   const searchParams = new URLSearchParams(window.location.search)
   searchInfo.value.category = searchParams.get('category')
+
+  if (!searchInfo.value.category) {
+    searchInfo.value.category = 'bpmf1'
+  }
 })
 </script>
 
