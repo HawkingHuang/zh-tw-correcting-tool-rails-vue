@@ -88,8 +88,8 @@ onMounted(() => {
             </button>
           </form>
         </div>
-        <div class="grid grid-cols-4 gap-4">
-          <div v-for="(word, index) in libraries" :key="index" class="rounded border border-gray-200 bg-gray-200">
+        <div class="grid grid-cols-4 gap-4 md:grid-cols-2">
+          <div v-for="(word, index) in libraries" :key="index" class="rounded border border-gray-100 bg-gray-100">
             <div class="flex justify-center gap-1">
               <div class="py-2 text-lg text-green-500">{{ word.correct_word }}</div>
               <div class="py-2 text-lg text-red-500">{{ word.incorrect_word }}</div>

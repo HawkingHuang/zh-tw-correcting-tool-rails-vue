@@ -1,4 +1,6 @@
 class LibrariesController < ApplicationController
+  before_action :require_login
+
   def index
     if params[:category].present?
       @libraries = Library.where(bpmf_category: params[:category])

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :redirect_if_authenticated, only: [:new, :create]
   def new
     render :login
   end
@@ -19,5 +20,13 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to login_path, notice: "Log out successfully!"
+  end
+
+  private
+
+  def redirect_if_authenticated
+    if session[:user_id].present?
+      redirect_to about_index_path, alert: "You are already logged in!"
+    end
   end
 end
