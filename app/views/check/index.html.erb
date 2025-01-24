@@ -1,0 +1,7 @@
+<div id="check-page" class="p-2">
+  <%= render "/header" %>
+  <%= render "/notice" %>
+  <check-index
+    :all-words="<%= @all_words.to_json %>"
+  />
+</div>

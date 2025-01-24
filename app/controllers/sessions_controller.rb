@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to about_index_path, notice: "Log in successfully!"
+      redirect_to check_index_path, notice: "Log in successfully!"
     else
       flash[:alert] = "Invalid username or password"
       render :login
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   def redirect_if_authenticated
     if session[:user_id].present?
-      redirect_to about_index_path, alert: "You are already logged in!"
+      redirect_to check_index_path, alert: "You are already logged in!"
     end
   end
 end

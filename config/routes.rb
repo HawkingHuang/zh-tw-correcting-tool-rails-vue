@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+
   # 註冊／登入
   get "signup", to: "registrations#new"
   post "signup", to: "registrations#create"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
+
+  # 錯字檢查
+  resources :check, only: [:index] do
+    post :examine, on: :collection
+  end
   
   # 自訂詞彙
   resources :customs, except: :show
