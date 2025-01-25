@@ -79,7 +79,7 @@ const submitForm = () => {
           <BackButton :hasForm="true" />
           <button
             type="submit"
-            class="btn btn-success text-xl"
+            class="default-btn btn-green"
           >
             <SendOutlined />
             Confirm

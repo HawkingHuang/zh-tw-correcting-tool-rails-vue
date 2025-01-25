@@ -31,7 +31,7 @@ const goBack = async () => {
 </script>
 <template>
   <div class="flex justify-end gap-3 py-3">
-    <button @click="goBack" type="button" class="btn btn-ghost text-xl">
+    <button @click="goBack" type="button" class="default-btn btn-gray">
       <RollbackOutlined />
       Go Back
     </button>

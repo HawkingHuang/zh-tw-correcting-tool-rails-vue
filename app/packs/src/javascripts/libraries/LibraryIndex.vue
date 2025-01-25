@@ -86,7 +86,7 @@ onMounted(() => {
             />
             <button
               type="submit"
-              class="btn text-lg"
+              class="default-btn btn-gray"
             >
               <SearchOutlined />
               Search

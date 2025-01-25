@@ -27,13 +27,13 @@ onMounted(() => {
       ></BaseTextInput>
       <button
         type="submit"
-        class="btn text-lg"
+        class="default-btn btn-gray"
       >
         <SearchOutlined />
         Search
       </button>
     </form>
-    <a href="/customs/new" class="btn text-lg">
+    <a href="/customs/new" class="default-btn btn-gray">
       <plus-square-outlined />
       Add New Words
     </a>

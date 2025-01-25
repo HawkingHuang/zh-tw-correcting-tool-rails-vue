@@ -54,11 +54,11 @@ const reset = () => {
           </div>
         </section>
         <section class="mx-8 flex gap-4">
-          <button class="btn w-[150px] bg-green-500 text-xl text-white" @click="examine" aria-label="Check">
+          <button class="default-btn btn-green w-[150px]" @click="examine" aria-label="Check">
             <CheckCircleOutlined />
             Examine
           </button>
-          <button class="btn w-[150px] bg-red-500 text-xl text-white" @click="reset" aria-label="Refresh">
+          <button class="default-btn btn-red w-[150px]" @click="reset" aria-label="Refresh">
             <ClearOutlined />
             Reset
           </button>

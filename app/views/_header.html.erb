@@ -1,5 +1,5 @@
 <% modules = [
-  { name: "Check", path: check_index_path, controller_path: "sessions" },
+  { name: "Check", path: check_index_path, controller_path: "check" },
   { name: "Custom", path: customs_path, controller_path: "customs" },
   { name: "Library", path: libraries_path(category: "bpmf1"), controller_path: "libraries" },
   { name: "Report", path: login_path, controller_path: "sessions" },
@@ -22,17 +22,17 @@
       </svg>
     </button>
   </div>
-  <div class="flex-1">
+  <div class="flex-1 gap-1">
     <% modules.each do |tab| %>
       <%= link_to(
           tab[:name],
           tab[:path],
           class: (controller.controller_path == tab[:controller_path] ?
-            "btn text-xl" :
-            "btn btn-ghost text-xl")) %>
+            "default-btn btn-header-focus" :
+            "default-btn hover:bg-gray-200")) %>
     <% end %>
     <%= button_to "Log Out", logout_path, method: "delete",
-      class: "btn btn-ghost text-xl"
+      class: "default-btn hover:bg-gray-200"
       %>
   </div>
 </div>

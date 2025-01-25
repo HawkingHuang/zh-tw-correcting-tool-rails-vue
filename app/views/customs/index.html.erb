@@ -19,7 +19,7 @@
             <% @customs.each do |custom| %>
               <tr class="md:grid md:grid-cols-3 border-x border-gray-200 hover:bg-gray-200">
                 <td class="px-4 py-2 md:col-span-3 md:text-left">
-                  <%= link_to edit_custom_path(custom[:id]), class: "btn text-lg" do %>
+                  <%= link_to edit_custom_path(custom[:id]), class: "default-btn btn-gray" do %>
                     <edit-outlined /><div>Edit</div>
                   <% end %>
                 </td>
