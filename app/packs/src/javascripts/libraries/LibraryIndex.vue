@@ -89,6 +89,7 @@ onMounted(() => {
               class="btn text-lg"
             >
               <SearchOutlined />
+              Search
             </button>
           </form>
         </div>

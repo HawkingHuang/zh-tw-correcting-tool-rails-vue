@@ -30,10 +30,12 @@ onMounted(() => {
         class="btn text-lg"
       >
         <SearchOutlined />
+        Search
       </button>
     </form>
     <a href="/customs/new" class="btn text-lg">
       <plus-square-outlined />
+      Add New Words
     </a>
   </div>
 </template>
