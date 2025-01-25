@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_21_100751) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_25_085721) do
   create_table "customs", force: :cascade do |t|
     t.string "correct_word"
     t.string "incorrect_word"
@@ -27,6 +27,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_21_100751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bpmf_category"], name: "index_libraries_on_bpmf_category"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "username"
+    t.string "correct_word"
+    t.string "incorrect_word"
+    t.text "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

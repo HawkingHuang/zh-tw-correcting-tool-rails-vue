@@ -8,6 +8,8 @@ import '@/src/javascripts/check/index.js'
 import '@/src/javascripts/customs/index.js'
 import '@/src/javascripts/customs/form.js'
 import '@/src/javascripts/libraries/index.js'
+import '@/src/javascripts/reports/index.js'
+import '@/src/javascripts/reports/form.js'
 import '@/src/javascripts/about/index.js'
 
 import * as Turbo from '@hotwired/turbo'

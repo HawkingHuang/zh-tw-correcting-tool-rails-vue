@@ -1,0 +1,188 @@
+<script setup>
+import { ref, toRefs, onBeforeMount } from 'vue'
+import mySwal from '@/src/javascripts/plugins/mySwal.js'
+import BaseCard from '@/src/components/BaseCard.vue'
+import BaseSelect from '@/src/components/BaseSelect.vue'
+import BaseTextInput from '@/src/components/BaseTextInput.vue'
+import BackButton from '@/src/components/BackButton.vue'
+import { SendOutlined } from '@ant-design/icons-vue'
+
+const searchInfo = ref({
+  category: '',
+  word: ''
+})
+
+const props = defineProps({
+  token: {
+    type: String
+  },
+  reportWord: {
+    type: Object
+  }
+})
+const { token, reportWord } = toRefs(props)
+const editReportWord = ref(reportWord.value)
+
+const categoryList = [
+  { value: 'bpmf1', label: 'ㄅ' },
+  { value: 'bpmf2', label: 'ㄆ' },
+  { value: 'bpmf3', label: 'ㄇ' },
+  { value: 'bpmf4', label: 'ㄈ' },
+  { value: 'bpmf5', label: 'ㄉ' },
+  { value: 'bpmf6', label: 'ㄊ' },
+  { value: 'bpmf7', label: 'ㄋ' },
+  { value: 'bpmf8', label: 'ㄌ' },
+  { value: 'bpmf9', label: 'ㄍ' },
+  { value: 'bpmf10', label: 'ㄎ' },
+  { value: 'bpmf11', label: 'ㄏ' },
+  { value: 'bpmf12', label: 'ㄐ' },
+  { value: 'bpmf13', label: 'ㄑ' },
+  { value: 'bpmf14', label: 'ㄒ' },
+  { value: 'bpmf15', label: 'ㄓ' },
+  { value: 'bpmf16', label: 'ㄔ' },
+  { value: 'bpmf17', label: 'ㄕ' },
+  { value: 'bpmf18', label: 'ㄖ' },
+  { value: 'bpmf19', label: 'ㄗ' },
+  { value: 'bpmf20', label: 'ㄘ' },
+  { value: 'bpmf21', label: 'ㄙ' },
+  { value: 'bpmf22', label: 'ㄧ' },
+  { value: 'bpmf23', label: 'ㄨ' },
+  { value: 'bpmf24', label: 'ㄩ' },
+  { value: 'bpmf25', label: 'ㄚ' },
+  { value: 'bpmf26', label: 'ㄛ' },
+  { value: 'bpmf27', label: 'ㄜ' },
+  { value: 'bpmf28', label: 'ㄝ' },
+  { value: 'bpmf29', label: 'ㄞ' },
+  { value: 'bpmf30', label: 'ㄟ' },
+  { value: 'bpmf31', label: 'ㄠ' },
+  { value: 'bpmf32', label: 'ㄡ' },
+  { value: 'bpmf33', label: 'ㄢ' },
+  { value: 'bpmf34', label: 'ㄣ' },
+  { value: 'bpmf35', label: 'ㄤ' },
+  { value: 'bpmf36', label: 'ㄥ' },
+  { value: 'bpmf37', label: 'ㄦ' }
+]
+
+const wordList = ref([])
+
+onBeforeMount(() => {
+  if (reportWord.value.id) {
+    editReportWord.value = reportWord.value
+  } else {
+    editReportWord.value = {
+      correct_word: '',
+      incorrect_word: '',
+      response: ''
+    }
+    console.log(editReportWord.value)
+  }
+})
+
+const getWordList = (category) => {
+  wordList.value = []
+  searchInfo.value.word = ''
+  editReportWord.value.correct_word = ''
+  editReportWord.value.incorrect_word = ''
+
+  $.ajax({
+    url: `/reports/words/${category}`,
+    type: 'GET',
+    dataType: 'json',
+    success: (response) => {
+      console.log(response)
+      wordList.value = response.map((word) => {
+        return {
+          value: `${word.correct_word}／${word.incorrect_word}`,
+          label: `${word.correct_word}／${word.incorrect_word}`
+        }
+      })
+      searchInfo.value.word = wordList.value[0].value
+      fillInWords(wordList.value[0].value)
+    }
+  })
+}
+
+const fillInWords = (words) => {
+  const correctPart = words.split('／')[0]
+  const incorrectPart = words.split('／')[1]
+  editReportWord.value.correct_word = correctPart
+  editReportWord.value.incorrect_word = incorrectPart
+}
+
+const submitForm = () => {
+  $.ajax({
+    url: editReportWord.value.id
+      ? `/reports/${editReportWord.value.id}`
+      : '/reports',
+    type: editReportWord.value.id ? 'PATCH' : 'POST',
+    dataType: 'json',
+    headers: { 'X-CSRF-Token': token.value },
+    authenticity_token: true,
+    data: editReportWord.value,
+    success: async (response) => {
+      if (response.state === 0) {
+        window.location.replace('/reports')
+      }
+    },
+    error: (error) => {
+      console.log('error', error)
+      if (error.responseJSON.state === -1) {
+        mySwal.error({
+          title: error.responseJSON.message
+        })
+      }
+    }
+  })
+}
+</script>
+
+<template>
+  <div>
+    <base-card>
+      <div class="mb-4 flex gap-2">
+        <BaseSelect
+          :name="'category'"
+          :optionList="categoryList"
+          :optionsSelected="searchInfo.category"
+          @change="getWordList($event)"
+          @select="searchInfo.category = $event"
+        />
+        <BaseSelect
+          :name="'word'"
+          :optionList="wordList"
+          :optionsSelected="searchInfo.word"
+          @change="fillInWords($event)"
+          @select="searchInfo.word = $event"
+        />
+      </div>
+      <form @submit.prevent="submitForm" class="leave-need-confirm">
+        <div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-1">
+          <BaseTextInput
+            label="Correct Word"
+            name="correct_word"
+            v-model="editReportWord.correct_word"
+            maxlength="4"
+            required
+          />
+          <BaseTextInput
+            label="Incorrect Word"
+            name="incorrect_word"
+            v-model="editReportWord.incorrect_word"
+            maxlength="4"
+            required
+          />
+        </div>
+        <div class="flex items-center justify-end gap-3 py-3">
+          <BackButton :hasForm="true" />
+          <button
+            type="submit"
+            class="default-btn btn-green"
+          >
+            <SendOutlined />
+            Confirm
+          </button>
+        </div>
+      </form>
+    </base-card>
+  </div>
+</template>

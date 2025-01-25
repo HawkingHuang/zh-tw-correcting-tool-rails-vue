@@ -15,7 +15,6 @@ const props = defineProps({
 })
 
 const { libraries } = toRefs(props)
-console.log(libraries.value)
 
 const categoryList = [
   { value: 'bpmf1', label: 'ㄅ' },

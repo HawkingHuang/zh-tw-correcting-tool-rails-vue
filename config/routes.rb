@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   # 詞彙庫
   resources :libraries, only: :index
+
+  # 回報
+  resources :reports, only: [:index, :new, :create, :edit, :update] do
+    get 'words/:category', to: 'reports#words', on: :collection
+  end
   
   # 關於
   resources :about, only: :index
