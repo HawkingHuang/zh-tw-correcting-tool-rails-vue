@@ -2,5 +2,6 @@
   <report-form
     :token="'<%= form_authenticity_token %>'"
     :report-word="<%= @report.to_json %>"
+    :replies="<%= @replies.to_json %>"
   />
 </div>

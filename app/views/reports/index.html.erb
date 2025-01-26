@@ -13,7 +13,8 @@
               <th class="p-4">Action</th>
               <th class="p-4">Correct Word</th>
               <th class="p-4">Incorrect Word</th>
-              <th class="p-4">Response</th>
+              <th class="p-4">Informant</th>
+              <th class="p-4">Time</th>
             </tr>
           </thead>
           <tbody class="md:flex md:flex-col">
@@ -21,7 +22,7 @@
               <tr class="md:grid md:grid-cols-3 border-x border-gray-200 hover:bg-gray-200">
                 <td class="px-4 py-2 md:col-span-3 md:text-left">
                   <%= link_to edit_report_path(report[:id]), class: "default-btn btn-gray" do %>
-                    <info-circle-outlined />
+                    <comment-outlined />
                   <% end %>
                 </td>
                 <td data-title="Correct Word" class="px-4 py-2 md:col-span-3 md:text-left text-green-500">
@@ -30,8 +31,11 @@
                 <td data-title="Incorrect Word" class="px-4 py-2 md:col-span-3 md:text-left text-red-500">
                   <%= report[:incorrect_word] %>
                 </td>
-                <td data-title="Response" class="px-4 py-2 md:col-span-3 md:text-left">
-                  <%= report[:response] %>
+                <td data-title="Informant" class="px-4 py-2 md:col-span-3 md:text-left">
+                  <%= report[:username] %>
+                </td>
+                <td data-title="Time" class="px-4 py-2 md:col-span-3 md:text-left">
+                  <%= report[:created_at].strftime("%Y-%m-%d") %>
                 </td>
               </tr>
             <% end %>

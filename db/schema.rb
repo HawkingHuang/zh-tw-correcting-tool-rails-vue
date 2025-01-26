@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_25_085721) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_26_065458) do
   create_table "customs", force: :cascade do |t|
     t.string "correct_word"
     t.string "incorrect_word"
@@ -27,6 +27,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_25_085721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bpmf_category"], name: "index_libraries_on_bpmf_category"
+  end
+
+  create_table "report_replies", force: :cascade do |t|
+    t.integer "report_id", null: false
+    t.text "response"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_replies_on_report_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -47,4 +56,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_25_085721) do
   end
 
   add_foreign_key "customs", "users"
+  add_foreign_key "report_replies", "reports"
 end

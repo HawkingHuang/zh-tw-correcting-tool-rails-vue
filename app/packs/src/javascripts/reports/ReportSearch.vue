@@ -16,7 +16,7 @@ onMounted(() => {
 <template>
   <div class="mb-4 flex justify-between">
     <form
-      action="/customs"
+      action="/reports"
       accept-charset="UTF-8"
       method="get"
       class="flex gap-2"

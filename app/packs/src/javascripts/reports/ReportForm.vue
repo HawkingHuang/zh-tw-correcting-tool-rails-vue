@@ -6,6 +6,7 @@ import BaseSelect from '@/src/components/BaseSelect.vue'
 import BaseTextInput from '@/src/components/BaseTextInput.vue'
 import BackButton from '@/src/components/BackButton.vue'
 import { SendOutlined } from '@ant-design/icons-vue'
+import dayjs from 'dayjs'
 
 const searchInfo = ref({
   category: '',
@@ -18,11 +19,14 @@ const props = defineProps({
   },
   reportWord: {
     type: Object
+  },
+  replies: {
+    type: Array
   }
 })
-const { token, reportWord } = toRefs(props)
+const { token, reportWord, replies } = toRefs(props)
 const editReportWord = ref({})
-
+console.log(reportWord.value)
 const categoryList = [
   { value: 'bpmf1', label: 'ㄅ' },
   { value: 'bpmf2', label: 'ㄆ' },
@@ -67,7 +71,10 @@ const wordList = ref([])
 
 onBeforeMount(() => {
   if (reportWord.value.id) {
-    editReportWord.value = reportWord.value
+    editReportWord.value = {
+      ...reportWord.value,
+      response: ''
+    }
   } else {
     editReportWord.value = {
       correct_word: '',
@@ -109,15 +116,24 @@ const fillInWords = (words) => {
 }
 
 const submitForm = () => {
+  const reportData = {
+    report: {
+      correct_word: editReportWord.value.correct_word,
+      incorrect_word: editReportWord.value.incorrect_word,
+      response: editReportWord.value.response
+    }
+  }
+
   $.ajax({
     url: editReportWord.value.id
       ? `/reports/${editReportWord.value.id}`
       : '/reports',
     type: editReportWord.value.id ? 'PATCH' : 'POST',
     dataType: 'json',
+    contentType: 'application/json',
     headers: { 'X-CSRF-Token': token.value },
     authenticity_token: true,
-    data: editReportWord.value,
+    data: JSON.stringify(reportData),
     success: async (response) => {
       if (response.state === 0) {
         window.location.replace('/reports')
@@ -156,8 +172,30 @@ const submitForm = () => {
           @select="searchInfo.word = $event"
         />
       </div>
+
+      <div v-else class="custom-scroll mb-4 max-h-[38vh] flex-auto overflow-y-auto overflow-x-hidden rounded md:max-h-none md:min-h-0 md:w-full md:overflow-visible">
+        <table class="w-full whitespace-nowrap border-b border-solid border-b-gray-200 text-center align-middle text-lg md:min-w-[200px]">
+          <thead class="sticky -top-1 z-[100] md:hidden">
+            <tr class="bg-slate-200 text-xl text-black">
+              <th class="w-1/4 p-4 text-left">Informant/Respondent</th>
+              <th class="w-1/2 p-4 text-left">Content</th>
+              <th class="w-1/4 p-4 text-left">Time</th>
+            </tr>
+          </thead>
+          <tbody class="md:flex md:flex-col">
+            <tr v-for="(reply, index) in replies" :key="index" class="border-b-2 border-gray-200 hover:bg-gray-200 md:grid md:grid-cols-3">
+              <td data-title="Informant/Respondent" class="px-4 py-2 text-left md:col-span-3">{{ reply.username }}</td>
+              <td data-title="Content" class="px-4 py-2 text-left md:col-span-3">
+                <div class="flex items-center whitespace-pre-wrap">{{ reply.response }}</div>
+              </td>
+              <td data-title="Time" class="px-4 py-2 text-left md:col-span-3">{{ dayjs(reply.created_at).format('YYYY-MM-DD') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <form @submit.prevent="submitForm" class="leave-need-confirm">
-        <div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-1">
+        <div v-if="!editReportWord.id" class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-1">
           <BaseTextInput
             label="Correct Word"
             name="correct_word"
@@ -186,8 +224,8 @@ const submitForm = () => {
             @change="editReportWord.response = $event.target.value"
             class="w-full resize-none rounded-md border"
             cols="30"
-            rows="5"
-            maxlength="500"
+            rows="4"
+            maxlength="50"
             required
           ></textarea>
         </div>

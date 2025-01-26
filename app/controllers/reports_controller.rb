@@ -1,40 +1,56 @@
 class ReportsController < ApplicationController
   def index
     @reports = Report.order(created_at: :desc)
+
+    if params[:keyword].present?
+      @reports = @reports.where("correct_word LIKE ? OR incorrect_word LIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    end   
   end
 
   def new
     @report = Report.new
+    @report.replies.build
   end
 
   def create
     @report = Report.new(report_params.merge(username: current_user.username))
-
+  
     if @report.save
-      render json: { state: 0 }
-      flash[:notice] = "Report successfully created!"
+      reply = @report.replies.create(response: params[:report][:response], username: current_user.username)
+      
+      if reply.save
+        render json: { state: 0 }
+        flash[:notice] = "Report and first response successfully created!"
+      else
+        flash[:alert] = "Failed to create first response. Please check your input."
+        render :new
+      end
     else
       flash[:alert] = "Failed to create report. Please check your input."
       render :new
     end
   end
+  
 
-  # 編輯回報（回覆功能）
   def edit
     @report = Report.find(params[:id])
+    @replies = @report.replies
   end
 
-  # 更新回報（添加回覆）
   def update
     @report = Report.find(params[:id])
-
-    if @report.update(response: params[:report][:response])
-      redirect_to reports_path, notice: "Response successfully updated!"
+  
+    reply = @report.replies.create(response: params[:report][:response], username: current_user.username)
+  
+    if reply.save
+      render json: { state: 0 }
+      flash[:notice] = "Response successfully added!"
     else
-      flash[:alert] = "Failed to update response."
+      flash[:alert] = "Failed to add response."
       render :edit
     end
   end
+  
 
   def words
     category = params[:category]
@@ -50,6 +66,6 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.permit(:correct_word, :incorrect_word, :response)
+    params.require(:report).permit(:correct_word, :incorrect_word, :response)
   end
 end
