@@ -8,10 +8,11 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(report_params)
+    @report = Report.new(report_params.merge(username: current_user.username))
 
     if @report.save
-      redirect_to reports_path, notice: "Report successfully created!"
+      render json: { state: 0 }
+      flash[:notice] = "Report successfully created!"
     else
       flash[:alert] = "Failed to create report. Please check your input."
       render :new
@@ -49,6 +50,6 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:username, :correct_word, :incorrect_word, :response)
+    params.permit(:correct_word, :incorrect_word, :response)
   end
 end

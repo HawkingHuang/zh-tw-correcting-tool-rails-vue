@@ -21,7 +21,7 @@ const props = defineProps({
   }
 })
 const { token, reportWord } = toRefs(props)
-const editReportWord = ref(reportWord.value)
+const editReportWord = ref({})
 
 const categoryList = [
   { value: 'bpmf1', label: 'ㄅ' },
@@ -89,7 +89,6 @@ const getWordList = (category) => {
     type: 'GET',
     dataType: 'json',
     success: (response) => {
-      console.log(response)
       wordList.value = response.map((word) => {
         return {
           value: `${word.correct_word}／${word.incorrect_word}`,
@@ -139,16 +138,18 @@ const submitForm = () => {
 <template>
   <div>
     <base-card>
-      <div class="mb-4 flex gap-2">
+      <div v-if="!editReportWord.id" class="mb-4 flex gap-2">
         <BaseSelect
-          :name="'category'"
+          label="Bopomofo"
+          name="category"
           :optionList="categoryList"
           :optionsSelected="searchInfo.category"
           @change="getWordList($event)"
           @select="searchInfo.category = $event"
         />
         <BaseSelect
-          :name="'word'"
+          label="Correct/Incorrect"
+          name="word"
           :optionList="wordList"
           :optionsSelected="searchInfo.word"
           @change="fillInWords($event)"
@@ -171,6 +172,24 @@ const submitForm = () => {
             maxlength="4"
             required
           />
+        </div>
+        <div>
+          <div class="flex items-baseline gap-1 py-1">
+            <span class="text-lg font-bold">
+              Response
+              <span class="text-sm font-light text-red-400">*</span>
+            </span>
+          </div>
+          <textarea
+            name="response"
+            :value="editReportWord.response"
+            @change="editReportWord.response = $event.target.value"
+            class="w-full resize-none rounded-md border"
+            cols="30"
+            rows="5"
+            maxlength="500"
+            required
+          ></textarea>
         </div>
         <div class="flex items-center justify-end gap-3 py-3">
           <BackButton :hasForm="true" />

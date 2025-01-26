@@ -6,6 +6,38 @@
       <div>
         <report-search />
       </div>
+      <div class="custom-scroll overflow-auto md:overflow-visible flex-auto min-h-[40vh] max-h-[66vh] md:min-h-0 md:max-h-none md:w-full rounded">
+        <table class="text-center text-lg min-w-[1000px] md:min-w-[200px] border-b border-solid border-b-gray-200 whitespace-nowrap align-middle w-full">
+          <thead class="sticky top-0 md:hidden">
+            <tr class="text-black bg-slate-200 text-xl border-x border-gray-200">
+              <th class="p-4">Action</th>
+              <th class="p-4">Correct Word</th>
+              <th class="p-4">Incorrect Word</th>
+              <th class="p-4">Response</th>
+            </tr>
+          </thead>
+          <tbody class="md:flex md:flex-col">
+            <% @reports.each do |report| %>
+              <tr class="md:grid md:grid-cols-3 border-x border-gray-200 hover:bg-gray-200">
+                <td class="px-4 py-2 md:col-span-3 md:text-left">
+                  <%= link_to edit_report_path(report[:id]), class: "default-btn btn-gray" do %>
+                    <info-circle-outlined />
+                  <% end %>
+                </td>
+                <td data-title="Correct Word" class="px-4 py-2 md:col-span-3 md:text-left text-green-500">
+                  <%= report[:correct_word] %>
+                </td>
+                <td data-title="Incorrect Word" class="px-4 py-2 md:col-span-3 md:text-left text-red-500">
+                  <%= report[:incorrect_word] %>
+                </td>
+                <td data-title="Response" class="px-4 py-2 md:col-span-3 md:text-left">
+                  <%= report[:response] %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </base-card>
 </div>
