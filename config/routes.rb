@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root to: "check#index"
   # 註冊／登入
   get "signup", to: "registrations#new"
   post "signup", to: "registrations#create"
