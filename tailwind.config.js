@@ -1,6 +1,6 @@
-const colors = require('tailwindcss/colors')
+import daisyui from 'daisyui'
 
-module.exports = {
+export default {
   mode: 'jit',
   content: ['./app/**/*.html*', './app/**/*.vue'],
   important: true,
@@ -27,7 +27,7 @@ module.exports = {
       }
     }
   },
-  plugins: [require('daisyui')],
+  plugins: [daisyui],
   daisyui: {
     styled: true,
     themes: true,
