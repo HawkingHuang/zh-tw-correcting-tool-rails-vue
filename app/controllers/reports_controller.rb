@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
     @reports = Report.order(created_at: :desc)
 
     if params[:keyword].present?
-      @reports = @reports.where("correct_word LIKE ? OR incorrect_word LIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @reports = @reports.where("correct_word LIKE ? OR incorrect_word LIKE ? OR username LIKE ? OR created_at LIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     end   
   end
 
