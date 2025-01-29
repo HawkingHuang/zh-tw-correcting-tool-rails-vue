@@ -64,3 +64,15 @@ h1 {
 .btn-red:hover {
   background-color: rgb(220 38 38);
 }
+
+@media (max-width: 1023px) {
+  tbody td[data-title]:before {
+    font-size: 1.1em;
+    font-weight: bold;
+    float: left;
+    width: 50%;
+    content: attr(data-title);
+    text-align: middle;
+    white-space: pre-line;
+  }
+}

@@ -14,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mb-4 flex justify-between">
+  <div class="mb-4 flex justify-between md:flex-col md:gap-2">
     <form
       action="/reports"
       accept-charset="UTF-8"
