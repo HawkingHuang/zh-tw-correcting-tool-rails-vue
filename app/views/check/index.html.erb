@@ -1,5 +1,7 @@
 <div id="check-page" class="p-2">
-  <%= render "/header" %>
+  <div>
+    <header-section />
+  </div>
   <%= render "/notice" %>
   <check-index
     :all-words="<%= @all_words.to_json %>"

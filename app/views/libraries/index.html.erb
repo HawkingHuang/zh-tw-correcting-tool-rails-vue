@@ -1,5 +1,7 @@
 <div id="library-page" class="p-2">
-  <%= render "/header" %>
+  <div>
+    <header-section />
+  </div>
   <%= render "/notice" %>
   <library-index
     :libraries="<%= @libraries.to_json %>"  

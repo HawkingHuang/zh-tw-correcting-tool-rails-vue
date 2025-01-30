@@ -26,7 +26,7 @@ const props = defineProps({
 })
 const { token, reportWord, replies } = toRefs(props)
 const editReportWord = ref({})
-console.log(reportWord.value)
+
 const categoryList = [
   { value: 'bpmf1', label: 'ㄅ' },
   { value: 'bpmf2', label: 'ㄆ' },
@@ -81,7 +81,6 @@ onBeforeMount(() => {
       incorrect_word: '',
       response: ''
     }
-    console.log(editReportWord.value)
   }
 })
 
