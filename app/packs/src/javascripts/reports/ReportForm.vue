@@ -183,7 +183,8 @@ const submitForm = () => {
           </thead>
           <tbody class="md:flex md:flex-col">
             <tr v-for="(reply, index) in replies" :key="index" class="border-b-2 border-gray-200 hover:bg-gray-200 md:grid md:grid-cols-3">
-              <td data-title="Informant/Respondent" class="px-4 py-2 text-left md:col-span-3">{{ reply.username }}</td>
+              <td data-title="Informant/Respondent" class="hidden px-4 py-2 text-left md:col-span-3 md:block"></td>
+              <td class="px-4 py-2 text-left md:col-span-3">{{ reply.username }}</td>
               <td data-title="Content" class="px-4 py-2 text-left md:col-span-3">
                 <div class="flex items-center whitespace-pre-wrap">{{ reply.response }}</div>
               </td>
