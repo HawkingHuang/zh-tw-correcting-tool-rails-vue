@@ -6,6 +6,7 @@
   "author": "HawkingHuang <math0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "@hotwired/turbo": "^7.3.0",
     "@rollup/plugin-inject": "^5.0.3",
     "@vitejs/plugin-vue": "^5.0.4",
@@ -20,8 +21,8 @@
     "eslint-plugin-promise": "6.6.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "eslint-plugin-vue": "^9.27.0",
-    "pinia": "^2.3.0",
     "jquery": "3.7.1",
+    "pinia": "^2.3.0",
     "sweetalert2": "^11.6.13",
     "turbolinks": "^5.2.0",
     "vue": "^3.4.27"

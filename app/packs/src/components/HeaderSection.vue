@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { MenuOutlined } from '@ant-design/icons-vue'
+import { ShieldCheckIcon, PlusCircleIcon, BookOpenIcon, FlagIcon, InformationCircleIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/vue/24/solid'
 
 const isMenuOpen = ref(false)
 const toggleMenu = () => {
@@ -8,11 +9,11 @@ const toggleMenu = () => {
 }
 
 const modules = [
-  { name: 'Check', path: '/check', controllerPath: 'check' },
-  { name: 'Custom', path: '/customs', controllerPath: 'customs' },
-  { name: 'Library', path: '/libraries?category=bpmf1', controllerPath: 'libraries' },
-  { name: 'Report', path: '/reports', controllerPath: 'reports' },
-  { name: 'About', path: '/about', controllerPath: 'about' }
+  { name: 'Check', path: '/check', controllerPath: 'check', icon: ShieldCheckIcon },
+  { name: 'Custom', path: '/customs', controllerPath: 'customs', icon: PlusCircleIcon },
+  { name: 'Library', path: '/libraries?category=bpmf1', controllerPath: 'libraries', icon: BookOpenIcon },
+  { name: 'Report', path: '/reports', controllerPath: 'reports', icon: FlagIcon },
+  { name: 'About', path: '/about', controllerPath: 'about', icon: InformationCircleIcon }
 ]
 </script>
 
@@ -23,18 +24,22 @@ const modules = [
       <button @click="toggleMenu" type="button" class="default-btn">
         <MenuOutlined />
       </button>
-      <div v-if="isMenuOpen" class="absolute left-0 top-full z-[500] grid grid-cols-1 justify-items-center gap-1 rounded bg-white p-4 shadow-xl">
+      <div v-if="isMenuOpen" class="absolute left-0 top-full z-[500] grid grid-cols-1 justify-start gap-1 rounded bg-white p-4 shadow-xl">
         <a
           v-for="tab in modules"
           :key="tab.name"
           :href="tab.path"
-          class="default-btn hover:bg-gray-200"
+          class="default-btn flex justify-start hover:bg-gray-200"
         >
+          <component :is="tab.icon" v-if="tab.icon" class="size-6" />
           {{ tab.name }}
         </a>
         <form method="post" action="/logout">
           <input type="hidden" name="_method" value="delete" />
-          <button type="submit" class="default-btn hover:bg-gray-200">Log Out</button>
+          <button type="submit" class="default-btn hover:bg-gray-200">
+            <ArrowRightStartOnRectangleIcon class="size-6" />
+            Log Out
+          </button>
         </form>
       </div>
     </div>
@@ -47,11 +52,15 @@ const modules = [
         :href="tab.path"
         class="default-btn hover:bg-gray-200"
       >
+        <component :is="tab.icon" v-if="tab.icon" class="size-6" />
         {{ tab.name }}
       </a>
       <form method="post" action="/logout">
         <input type="hidden" name="_method" value="delete" />
-        <button type="submit" class="default-btn hover:bg-gray-200">Log Out</button>
+        <button type="submit" class="default-btn hover:bg-gray-200">
+          <ArrowRightStartOnRectangleIcon class="size-6" />
+          Log Out
+        </button>
       </form>
     </div>
   </div>
