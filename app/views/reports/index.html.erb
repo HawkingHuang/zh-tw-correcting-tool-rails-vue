@@ -21,7 +21,7 @@
           </thead>
           <tbody class="md:flex md:flex-col">
             <% @reports.each do |report| %>
-              <tr class="md:grid md:grid-cols-3 border-x border-gray-200 hover:bg-gray-200">
+              <tr class="md:grid md:grid-cols-3 border-x md:border-y border-gray-200 hover:bg-gray-200">
                 <td class="px-4 py-2 md:col-span-3 md:text-left">
                   <%= link_to edit_report_path(report[:id]), class: "default-btn btn-gray" do %>
                     <comment-outlined />
