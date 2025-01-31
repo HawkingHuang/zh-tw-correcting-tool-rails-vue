@@ -185,10 +185,12 @@ const submitForm = () => {
             <tr v-for="(reply, index) in replies" :key="index" class="border-b-2 border-gray-200 hover:bg-gray-200 md:grid md:grid-cols-3">
               <td data-title="Informant/Respondent" class="hidden px-4 py-2 text-left md:col-span-3 md:block"></td>
               <td class="px-4 py-2 text-left md:col-span-3">{{ reply.username }}</td>
-              <td data-title="Content" class="px-4 py-2 text-left md:col-span-3">
+              <td data-title="Content" class="hidden px-4 py-2 text-left md:col-span-3 md:block"></td>
+              <td class="px-4 py-2 text-left md:col-span-3">
                 <div class="flex items-center whitespace-pre-wrap">{{ reply.response }}</div>
               </td>
-              <td data-title="Time" class="px-4 py-2 text-left md:col-span-3">{{ dayjs(reply.created_at).format('YYYY-MM-DD') }}</td>
+              <td data-title="Time" class="hidden px-4 py-2 text-left md:col-span-3 md:block"></td>
+              <td class="px-4 py-2 text-left md:col-span-3">{{ dayjs(reply.created_at).format('YYYY-MM-DD') }}</td>
             </tr>
           </tbody>
         </table>
