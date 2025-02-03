@@ -7,7 +7,7 @@ import inject from '@rollup/plugin-inject'
 export default defineConfig({
   plugins: [
     RubyPlugin(),
-    FullReload(["config/routes.rb", "app/views/**/*"]),
+    FullReload(['config/routes.rb', 'app/views/**/*']),
     vue(),
     inject({
       $: 'jquery',
@@ -18,6 +18,7 @@ export default defineConfig({
     include: ['@ant-design/icons-vue']
   },
   build: {
+    sourcemap: true,
     outDir: 'public/vite',
     assetsDir: 'assets',
     manifest: true,
@@ -30,8 +31,8 @@ export default defineConfig({
     postcss: {
       plugins: [
         require('tailwindcss'),
-        require('autoprefixer'),
-      ],
-    },
-  }  
+        require('autoprefixer')
+      ]
+    }
+  }
 })
