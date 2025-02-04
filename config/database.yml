@@ -21,8 +21,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: correcting-tool
+  database: <%= ENV["DATABASE_NAME"] %>
   username: <%= ENV["DATABASE_USER"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
-  host: localhost
+  host: <%= ENV["DATABASE_HOST"] %>
   port: 5432
