@@ -1,11 +1,24 @@
 {
+  "_turbo.es2017-esm-!~{004}~.js": {
+    "file": "assets/turbo-BY5i6zYN.css",
+    "src": "_turbo.es2017-esm-!~{004}~.js"
+  },
+  "_turbo.es2017-esm-BhAB4IVI.js": {
+    "css": [
+      "assets/turbo-BY5i6zYN.css"
+    ],
+    "file": "assets/turbo.es2017-esm-BhAB4IVI.js"
+  },
   "entrypoints/application.css": {
-    "file": "assets/application-cv2DS2T-.css",
+    "file": "assets/application-D1-RDb1k.css",
     "isEntry": true,
     "src": "entrypoints/application.css"
   },
   "entrypoints/application.js": {
-    "file": "assets/application-DP2rzg_V.js",
+    "file": "assets/application-CARezT3Q.js",
+    "imports": [
+      "_turbo.es2017-esm-BhAB4IVI.js"
+    ],
     "isEntry": true,
     "src": "entrypoints/application.js"
   }

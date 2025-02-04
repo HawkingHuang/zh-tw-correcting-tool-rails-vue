@@ -149,6 +149,7 @@ GEM
     nio4r (2.7.4)
     nokogiri (1.18.1-x64-mingw-ucrt)
       racc (~> 1.4)
+    pg (1.5.9)
     psych (5.2.3)
       date
       stringio
@@ -263,6 +264,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  pg (~> 1.5)
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)
   selenium-webdriver
