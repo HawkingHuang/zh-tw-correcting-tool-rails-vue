@@ -3,23 +3,100 @@
     "file": "assets/turbo-BY5i6zYN.css",
     "src": "_turbo.es2017-esm-!~{004}~.js"
   },
-  "_turbo.es2017-esm-BhAB4IVI.js": {
+  "_turbo.es2017-esm-CbnpJ3Tv.js": {
+    "assets": [
+      "assets/login-CNfJ0k9o.png",
+      "assets/signup-DWsIFsAu.png",
+      "assets/login2-gmmNIYTx.png",
+      "assets/check-Bf6lWGT-.png",
+      "assets/check2-TP_J-nP2.png",
+      "assets/custom-Qpc0jpPx.png",
+      "assets/custom2-Cz-izUoX.png",
+      "assets/custom3-bAwEubOI.png",
+      "assets/library-IKqArqjz.png",
+      "assets/library2-bvMm2EZr.png",
+      "assets/report-DyWqkMpB.png",
+      "assets/report2-ydjy5SQg.png",
+      "assets/report3-DuEu0TGo.png",
+      "assets/report4-Cch7dh6S.png",
+      "assets/logout-aKQwCaMx.png"
+    ],
     "css": [
       "assets/turbo-BY5i6zYN.css"
     ],
-    "file": "assets/turbo.es2017-esm-BhAB4IVI.js"
+    "file": "assets/turbo.es2017-esm-CbnpJ3Tv.js"
   },
   "entrypoints/application.css": {
-    "file": "assets/application-D1-RDb1k.css",
+    "file": "assets/application-CURl0eTF.css",
     "isEntry": true,
     "src": "entrypoints/application.css"
   },
   "entrypoints/application.js": {
-    "file": "assets/application-CARezT3Q.js",
+    "file": "assets/application-BO1B4D1g.js",
     "imports": [
-      "_turbo.es2017-esm-BhAB4IVI.js"
+      "_turbo.es2017-esm-CbnpJ3Tv.js"
     ],
     "isEntry": true,
     "src": "entrypoints/application.js"
+  },
+  "src/images/check.png": {
+    "file": "assets/check-Bf6lWGT-.png",
+    "src": "src/images/check.png"
+  },
+  "src/images/check2.png": {
+    "file": "assets/check2-TP_J-nP2.png",
+    "src": "src/images/check2.png"
+  },
+  "src/images/custom.png": {
+    "file": "assets/custom-Qpc0jpPx.png",
+    "src": "src/images/custom.png"
+  },
+  "src/images/custom2.png": {
+    "file": "assets/custom2-Cz-izUoX.png",
+    "src": "src/images/custom2.png"
+  },
+  "src/images/custom3.png": {
+    "file": "assets/custom3-bAwEubOI.png",
+    "src": "src/images/custom3.png"
+  },
+  "src/images/library.png": {
+    "file": "assets/library-IKqArqjz.png",
+    "src": "src/images/library.png"
+  },
+  "src/images/library2.png": {
+    "file": "assets/library2-bvMm2EZr.png",
+    "src": "src/images/library2.png"
+  },
+  "src/images/login.png": {
+    "file": "assets/login-CNfJ0k9o.png",
+    "src": "src/images/login.png"
+  },
+  "src/images/login2.png": {
+    "file": "assets/login2-gmmNIYTx.png",
+    "src": "src/images/login2.png"
+  },
+  "src/images/logout.png": {
+    "file": "assets/logout-aKQwCaMx.png",
+    "src": "src/images/logout.png"
+  },
+  "src/images/report.png": {
+    "file": "assets/report-DyWqkMpB.png",
+    "src": "src/images/report.png"
+  },
+  "src/images/report2.png": {
+    "file": "assets/report2-ydjy5SQg.png",
+    "src": "src/images/report2.png"
+  },
+  "src/images/report3.png": {
+    "file": "assets/report3-DuEu0TGo.png",
+    "src": "src/images/report3.png"
+  },
+  "src/images/report4.png": {
+    "file": "assets/report4-Cch7dh6S.png",
+    "src": "src/images/report4.png"
+  },
+  "src/images/signup.png": {
+    "file": "assets/signup-DWsIFsAu.png",
+    "src": "src/images/signup.png"
   }
 }

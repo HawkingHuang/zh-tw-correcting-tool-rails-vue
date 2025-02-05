@@ -24,7 +24,7 @@ import { LoginOutlined, UserAddOutlined } from '@ant-design/icons-vue'
             class="flex w-full items-center justify-center gap-2 rounded bg-green-400 p-3 text-xl font-bold text-white"
           >
             <LoginOutlined />
-            Login
+            Log In
           </button>
           <a
             href="/signup"
