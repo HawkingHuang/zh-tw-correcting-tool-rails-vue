@@ -3,7 +3,7 @@
     "file": "assets/turbo-BY5i6zYN.css",
     "src": "_turbo.es2017-esm-!~{004}~.js"
   },
-  "_turbo.es2017-esm-CbnpJ3Tv.js": {
+  "_turbo.es2017-esm-ixn1tROd.js": {
     "assets": [
       "assets/login-CNfJ0k9o.png",
       "assets/signup-DWsIFsAu.png",
@@ -24,7 +24,7 @@
     "css": [
       "assets/turbo-BY5i6zYN.css"
     ],
-    "file": "assets/turbo.es2017-esm-CbnpJ3Tv.js"
+    "file": "assets/turbo.es2017-esm-ixn1tROd.js"
   },
   "entrypoints/application.css": {
     "file": "assets/application-CURl0eTF.css",
@@ -32,9 +32,9 @@
     "src": "entrypoints/application.css"
   },
   "entrypoints/application.js": {
-    "file": "assets/application-BO1B4D1g.js",
+    "file": "assets/application-tt4VqhrJ.js",
     "imports": [
-      "_turbo.es2017-esm-CbnpJ3Tv.js"
+      "_turbo.es2017-esm-ixn1tROd.js"
     ],
     "isEntry": true,
     "src": "entrypoints/application.js"
